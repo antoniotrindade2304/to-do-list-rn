@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Page, HeaderText, TextInput, AddButtonIcon, InputArea, ItemTask, FooterText, DeleteButtonIcon, CheckedButtonIcon, UncheckedButtonIcon } from "./style/index";
 import TaskList from "./components/TaskList";
 import { TouchableOpacity, Text, FlatList, Alert, Keyboard } from "react-native";
-
+import uuid from 'react-native-uuid';
 
 function MainScreen(props){
     const [task, setTask] = useState("");
@@ -14,6 +14,7 @@ function MainScreen(props){
         if(task.trim() != '' ){
             let newTaskData = [...taskData];
             newTaskData.push({
+                id: uuid.v4(),
                 task: task,
                 done: false
             })
@@ -42,6 +43,9 @@ function MainScreen(props){
         console.log(taskData[index].done);
     }
 
+    const handleDeleteButton = (index,item) => {
+
+    }
  
     return(
         <Page>
@@ -61,7 +65,7 @@ function MainScreen(props){
             <FlatList 
                 data = {taskData}
                 renderItem = {({item, index}) => 
-                <ItemTask key = {index} style = {{backgroundColor: item.done ? "#62f07f" : "#f0e91f"}}>
+                <ItemTask  style = {{backgroundColor: item.done ? "#62f07f" : "#f0e91f"}}>
                     {item.done ? 
                         <>
                             <Text style = {{color: "#000", fontSize: 20, marginTop: 5, textDecorationLine: "line-through", fontWeight: "bold", width: "80%"}}>
@@ -94,6 +98,7 @@ function MainScreen(props){
                     }
                     
                 </ItemTask>}
+                keyExtractor = {(item) => item.id}
             />
             
         </Page>
