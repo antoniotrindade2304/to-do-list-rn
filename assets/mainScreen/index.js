@@ -36,11 +36,9 @@ function MainScreen(props){
     }
 
     const handlePressTask = (index) => {
-        console.log(taskData[index].done);
         let newTaskData = [...taskData];
         newTaskData[index].done = !newTaskData[index].done;
         setTaskData(newTaskData);
-        console.log(taskData[index].done);
     }
 
     const handleDeleteButton = (index) => {
