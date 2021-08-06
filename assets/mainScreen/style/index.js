@@ -39,11 +39,6 @@ export const ItemTask = styled.TouchableOpacity`
     flex-direction: row;
 `
 
-export const FooterText = styled.Text`
-    color: white;
-    font-size: 20px;
-    font-style: italic;
-`
 
 
 export const AddButtonIcon = () => {

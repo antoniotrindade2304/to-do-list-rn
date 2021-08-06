@@ -39,9 +39,7 @@ function MainScreen(props){
         let newTaskData = [...taskData];
         newTaskData[index].done = !newTaskData[index].done;
         setTaskData(newTaskData);
-      
         console.log(taskData[index].done);
-        
     }
 
  
@@ -55,7 +53,7 @@ function MainScreen(props){
                     onChangeText = {(t) => setTask(t)}
                 />
                 <TouchableOpacity onPress = {handleAddButton}>
-                    <AddButtonIcon/>
+                    <AddButtonIcon />
                 </TouchableOpacity>
                 
             </InputArea>
@@ -63,13 +61,13 @@ function MainScreen(props){
             <FlatList 
                 data = {taskData}
                 renderItem = {({item, index}) => 
-                <ItemTask key = {index} style = {{backgroundColor: item.done ? "#62f07f" : "#f0e91f"}} onPress = { () => handlePressTask(index) }>
+                <ItemTask key = {index} style = {{backgroundColor: item.done ? "#62f07f" : "#f0e91f"}}>
                     {item.done ? 
                         <>
                             <Text style = {{color: "#000", fontSize: 20, marginTop: 5, textDecorationLine: "line-through", fontWeight: "bold", width: "80%"}}>
                                 {item.task}
                             </Text>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress = { () => handlePressTask(index) }>
                                 <UncheckedButtonIcon />
                             </TouchableOpacity>
                             
@@ -84,7 +82,7 @@ function MainScreen(props){
                                 {item.task}
                             </Text>
 
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress = { () => handlePressTask(index) }>
                                 <CheckedButtonIcon />
                             </TouchableOpacity>
                             
@@ -98,7 +96,6 @@ function MainScreen(props){
                 </ItemTask>}
             />
             
-            <FooterText>Desenvolvido para: Joceane Puridade</FooterText>
         </Page>
     );
 };
