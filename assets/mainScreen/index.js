@@ -43,8 +43,16 @@ function MainScreen(props){
         console.log(taskData[index].done);
     }
 
-    const handleDeleteButton = (index,item) => {
-
+    const handleDeleteButton = (index) => {
+        let newTaskData = [...taskData];
+        newTaskData = newTaskData.filter((it, i) => {
+            if(i != index){
+                return true;
+            }else{
+                return false;
+            }
+        })
+        setTaskData(newTaskData);
     }
  
     return(
@@ -75,7 +83,7 @@ function MainScreen(props){
                                 <UncheckedButtonIcon />
                             </TouchableOpacity>
                             
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress = { () => handleDeleteButton(index) }>
                                 <DeleteButtonIcon />
                             </TouchableOpacity>
                             
@@ -90,7 +98,7 @@ function MainScreen(props){
                                 <CheckedButtonIcon />
                             </TouchableOpacity>
                             
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress = { () => handleDeleteButton(index) }>
                                 <DeleteButtonIcon />
                             </TouchableOpacity>
                             
